@@ -29,7 +29,7 @@ Se quiser, adicione tags como #feito, #andamento, #importante
   - [x] Registrar `data_bloqueio` ao bloquear usuário
   - [x] Impedir envio de mensagem por usuários bloqueados
   - [x] Trigger de auditoria (login ou envio)
-- [ ] Povoar o banco (mínimo 5 registros por tabela)
+- [x] Povoar o banco (mínimo 5 registros por tabela)
 
 ---
 
