@@ -1,7 +1,4 @@
-# 📁 Projeto: msn2 – Sistema de Chat Online
-Trabalho Prático de BD I e LBD I – 1º Sem 2025
-
---- 
+# 📁 Projeto: MSN2 – Sistema de Chat Online
 
 ## 🧠 Modo de usar:
 
