@@ -1,6 +1,14 @@
 # 📁 Projeto: msn2 – Sistema de Chat Online
 Trabalho Prático de BD I e LBD I – 1º Sem 2025
 
+--- 
+
+## 🧠 Modo de usar:
+
+Marque cada item com - [x] quando concluir
+
+Se quiser, adicione tags como #feito, #andamento, #importante
+
 ---
 
 ## 🟣 Etapa 1 – Documentação e Planejamento Inicial
