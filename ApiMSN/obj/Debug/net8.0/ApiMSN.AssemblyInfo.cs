@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiMSN")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a14a9108ed5ada13dcb9ce8994fe29cd2d80fe7f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9368dae7f4579cb4f97d4159925007b535ca511e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiMSN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiMSN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
