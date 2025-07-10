@@ -23,12 +23,12 @@ Se quiser, adicione tags como #feito, #andamento, #importante
 - [x] Criar tabelas no Oracle
 - [ ] Verificar integridade das relações com `FOREIGN KEY`
 - [ ] Criar *views* úteis (opcional)
-- [ ] Criar **5 triggers**:
-  - [ ] Impedir mensagens em salas privadas sem participação
-  - [ ] Atualizar `data_entrada` ao entrar em sala
-  - [ ] Registrar `data_bloqueio` ao bloquear usuário
-  - [ ] Impedir envio de mensagem por usuários bloqueados
-  - [ ] Trigger de auditoria (login ou envio)
+- [x] Criar **5 triggers**:
+  - [x] Impedir mensagens em salas privadas sem participação
+  - [x] Atualizar `data_entrada` ao entrar em sala
+  - [x] Registrar `data_bloqueio` ao bloquear usuário
+  - [x] Impedir envio de mensagem por usuários bloqueados
+  - [x] Trigger de auditoria (login ou envio)
 - [ ] Povoar o banco (mínimo 5 registros por tabela)
 
 ---
