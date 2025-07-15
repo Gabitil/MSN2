@@ -1,7 +1,0 @@
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.csproj.AssemblyReference.cache
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.GeneratedMSBuildEditorConfig.editorconfig
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.AssemblyInfoInputs.cache
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.AssemblyInfo.cs
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.csproj.CoreCompileInputs.cache
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.MvcApplicationPartsAssemblyInfo.cache
-/media/gabitil/SSD/Facul/MSN2/ApiMSN/obj/Debug/net8.0/ApiMSN.sourcelink.json

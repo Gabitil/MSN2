@@ -1,0 +1,24 @@
+Signature-Version: 1.0
+Created-By: 11.0.25 (Oracle Corporation)
+SHA-256-Digest-Manifest: zCaB9fk1vcqGLKMHfXDVANAYCbKeWsjqrhs+qoBmelY=
+SHA-256-Digest-Manifest-Main-Attributes: rXGLzFRoiTCUr2HhBcoohKqa0SdlZ6G
+ pz173+fKLH2E=
+
+Name: instantclient_23_8/SQLPLUS_LICENSE
+SHA-256-Digest: 5rvqFiG/DqW1DRkfM9d6ZFyNpMqc55FxLzx3F4z+Ma8=
+
+Name: instantclient_23_8/glogin.sql
+SHA-256-Digest: aoX52j3hHOABS0MRWaYRI+yKgMcd5RxIgdZ6KWmnwpI=
+
+Name: instantclient_23_8/sqlplus
+SHA-256-Digest: 3IcG1dfoFOCTzoZcMuLmubgr7DCPR9LorXo+uEFqZk8=
+
+Name: instantclient_23_8/SQLPLUS_README
+SHA-256-Digest: iN6l2CGH5myVTj+/ihXyCKV/AanmNcjbSogJqmB2biA=
+
+Name: instantclient_23_8/libsqlplusic.so
+SHA-256-Digest: Wh1H7Yke1dZgA/vR+QGsZLgVkV5xf/qZlZBNJjBVWMI=
+
+Name: instantclient_23_8/libsqlplus.so
+SHA-256-Digest: G+4iL26btU2ncwi3z37097Mwpk9kqbIS+epHLxEaWC8=
+

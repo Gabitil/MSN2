@@ -12,16 +12,16 @@ Se quiser, adicione tags como #feito, #andamento, #importante
 
 - [x] Definir nome do projeto (`msn2`)
 - [x] Definir tema e registrar no AVA
-- [ ] Escrever universo de discurso do banco (30 a 60 linhas)
+- [x] Escrever universo de discurso do banco (30 a 60 linhas)
 - [x] Criar MER no Dia
-- [ ] Explicar o DER no PDF final
+- [x] Explicar o DER no PDF final
 
 ---
 
 ## 🟡 Etapa 2 – Banco de Dados Relacional
 
 - [x] Criar tabelas no Oracle
-- [ ] Verificar integridade das relações com `FOREIGN KEY`
+- [x] Verificar integridade das relações com `FOREIGN KEY`
 - [ ] Criar *views* úteis (opcional)
 - [x] Criar **5 triggers**:
   - [x] Impedir mensagens em salas privadas sem participação
@@ -38,39 +38,40 @@ Se quiser, adicione tags como #feito, #andamento, #importante
 ### ⚙️ Configuração Inicial
 
 - [x] Criar estrutura do projeto .NET
-- [ ] Configurar conexão com banco Oracle
-- [ ] Testar conexão com Oracle (Dapper / EF / ADO.NET)
+- [x] Configurar conexão com banco Oracle
+- [x] Testar conexão com Oracle (Dapper / EF / ADO.NET)
 - [ ] Criar modelos (`/Models`)
 - [ ] Criar DTOs (`/DTOs`)
 
 ### 🔁 Endpoints CRUD
 
 #### Usuário
-- [ ] GET todos
-- [ ] GET por id
-- [ ] POST (criar)
-- [ ] PUT (editar)
-- [ ] DELETE (remover)
+- [x] GET todos
+- [x] GET por id
+- [x] POST (criar)
+- [x] PUT (editar)
+- [x] DELETE (remover)
 
 #### Sala
-- [ ] GET todos
-- [ ] GET por id
-- [ ] POST
-- [ ] PUT
-- [ ] DELETE
+- [x] GET todos
+- [x] GET por id
+- [x] POST
+- [x] PUT
+- [x] DELETE
 
 #### Mensagem
-- [ ] GET todas
-- [ ] GET por sala
-- [ ] POST nova mensagem
+- [x] GET todas
+- [x] GET por mensagens eviadas
+- [x] GET por mensagens recebidas
+- [x] POST nova mensagem
 
 #### Participação
-- [ ] POST entrar em sala
-- [ ] DELETE sair da sala
+- [x] POST entrar em sala
+- [x] DELETE sair da sala
 
 #### Bloqueio
-- [ ] POST bloquear
-- [ ] DELETE desbloquear
+- [x] POST bloquear
+- [x] DELETE desbloquear
 
 ### 📊 Relatórios SQL
 
