@@ -22,7 +22,15 @@ function Login({ onLogin }) {
       console.log("Resposta do login:", res.data);
       onLogin(res.data);
     } catch (err) {
-      setErro("Email ou senha incorretos");
+      console.error("Erro ao fazer login:", err);
+      if (err.response && err.response.status === 401) {
+        setErro("Email ou senha inválidos.");
+      } else {
+        setErro("Ocorreu um erro ao tentar fazer login. Tente novamente.");
+      }
+      onLogin(null);
+      setEmail("");
+      setSenha("");
     }
   };
 
@@ -55,25 +63,63 @@ function Login({ onLogin }) {
 function Home({ user }) {
   const [conversas, setConversas] = useState([]);
   const [salas, setSalas] = useState([]);
-  const [mensagens, setMensagens] = useState([]);
+
 
   useEffect(() => {
+
+  if (!user?.id){ return;}
+
     async function fetchConversas() {
-      const res = await api.get("/getmensagemenviadas", { params: { id: user.Id } });
-      const unicos = [...new Set(res.data.map((m) => m.IdDestinatario))];
-      setConversas(unicos);
+      try {
+        const res = await api.get("/getmensagemenviadas", { params: { id: user.id } });
+
+        // Filtra apenas mensagens de tipo USUARIO
+        const mensagensUsuario = res.data.filter((m) => m.tipo === "USUARIO");
+
+        // Agrupa por ID do destinatário para evitar duplicatas
+        const unicos = [
+          ...new Map(mensagensUsuario.map(m => [m.idDestinatario, m])).values()
+        ];
+
+        setConversas(unicos);
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          console.error("Nenhuma conversa encontrada.");
+          setConversas([]);
+        } else {
+          console.error("Erro ao buscar conversas:", err);
+        }
+      }
     }
 
+
     async function fetchSalas() {
-      const res = await api.get("/getsalas");
-      const todas = res.data;
-      const participacoes = await api.get("/getmensagemrecebidas", { params: { id: user.Id } });
-      const idsSalas = participacoes.data
-        .filter((m) => m.Tipo === "SALA")
-        .map((m) => m.IdSala);
-      const minhas = todas.filter((s) => idsSalas.includes(s.Id));
-      const outras = todas.filter((s) => s.Tipo === "publica" && !idsSalas.includes(s.Id));
-      setSalas([ { titulo: "Minhas Salas", itens: minhas }, { titulo: "Salas Públicas", itens: outras } ]);
+      try {
+        const res = await api.get("/getsalas");
+        const todas = res.data;
+
+        const participacoes = await api.get("/getmensagemrecebidas", { params: { id: user.id } });
+        const idsSalas = participacoes.data
+          .filter((m) => m.tipo === "SALA")
+          .map((m) => m.idSala);
+
+        const minhas = todas.filter((s) => idsSalas.includes(s.idSala));
+        const outras = todas.filter((s) => s.tipo === "publica" && !idsSalas.includes(s.idSala));
+
+        setSalas([
+          { titulo: "Minhas Salas", itens: minhas },
+          { titulo: "Salas Públicas", itens: outras }
+        ]);
+      } catch (err) {
+        if (err.response && err.response.status === 404) {
+          console.error("Nenhuma sala encontrada.");
+          setSalas([]);
+        }
+        else {
+          console.error("Erro ao buscar salas:", err);
+        }
+
+      }
     }
 
     fetchConversas();
@@ -82,14 +128,15 @@ function Home({ user }) {
 
   return (
     <div className="p-6">
-      <h1 className="text-xl font-bold">Bem-vindo, {user.Nome}!</h1>
+      <h1 className="text-xl font-bold">Bem-vindo, {user.nome}!</h1>
+
       <div className="grid grid-cols-2 gap-6 mt-6">
         <div>
           <h2 className="text-lg font-semibold mb-2">Conversas</h2>
           <ul className="space-y-2">
-            {conversas.map((id) => (
-              <li key={id} className="border p-2 rounded hover:bg-gray-100 cursor-pointer">
-                Usuário #{id}
+            {conversas.map((c) => (
+              <li key={c.nomeDestinatario} className="border p-2 rounded hover:bg-gray-100 cursor-pointer">
+                {c.nomeDestinatario}
               </li>
             ))}
           </ul>
@@ -101,10 +148,10 @@ function Home({ user }) {
               <ul className="space-y-2">
                 {grupo.itens.map((sala) => (
                   <li
-                    key={sala.Id}
+                    key={sala.idSala}
                     className="border p-2 rounded hover:bg-gray-100 cursor-pointer"
                   >
-                    {sala.Nome} ({sala.Tipo})
+                    {sala.nome} ({sala.tipo})
                   </li>
                 ))}
               </ul>

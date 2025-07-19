@@ -315,8 +315,9 @@ app.MapGet("/getsalas", async () =>
         {
             salas.Add(new
             {
-                Id = reader.GetInt32(0), // Ajuste conforme sua tabela
-                Nome = reader.GetString(1) // Ajuste conforme sua tabela
+                IdSala = reader.GetInt32(0), // Ajuste conforme sua tabela
+                Nome = reader.GetString(1), // Ajuste conforme sua tabela
+                Tipo = reader.GetString(2), // Ajuste conforme sua tabela
             });
         }
 
@@ -361,8 +362,9 @@ app.MapGet("/getsala", async (string termo) =>
         {
             sala.Add(new
             {
-                Id = reader.GetInt32(0),
-                Nome = reader.GetString(1)
+                IdSala = reader.GetInt32(0),
+                Nome = reader.GetString(1),
+                Tipo = reader.GetString(2),
             });
         }
 
@@ -504,7 +506,14 @@ app.MapGet("/getmensagens", async () =>
         // ==== Consulta 1: MENSAGEM_SALA ====
         await using (var cmdSala = conn.CreateCommand())
         {
-            cmdSala.CommandText = "SELECT ID_MENSAGEM, ID_SALA, ID_REMETENTE, MENSAGEM, DATA_ENVIO FROM MENSAGEM_SALA";
+            cmdSala.CommandText = @"
+            SELECT 
+                ID_MENSAGEM,
+                ID_SALA, 
+                ID_REMETENTE, 
+                MENSAGEM, 
+                DATA_ENVIO 
+            FROM MENSAGEM_SALA";
 
             await using var reader = await cmdSala.ExecuteReaderAsync();
             while (await reader.ReadAsync())
@@ -524,7 +533,16 @@ app.MapGet("/getmensagens", async () =>
         // ==== Consulta 2: MENSAGEM_USUARIO ====
         await using (var cmdUsuario = conn.CreateCommand())
         {
-            cmdUsuario.CommandText = "SELECT ID_MENSAGEM, ID_REMETENTE, ID_DESTINATARIO, MENSAGEM, DATA_ENVIO FROM MENSAGEM_USUARIO";
+            cmdUsuario.CommandText = @"
+            SELECT 
+                MU.ID_MENSAGEM,
+                MU.ID_REMETENTE,
+                MU.ID_DESTINATARIO,
+                D.NOME AS NOME_DESTINATARIO,
+                MU.MENSAGEM,
+                MU.DATA_ENVIO
+            FROM MENSAGEM_USUARIO MU
+            JOIN USUARIO D ON MU.ID_DESTINATARIO = D.ID_USUARIO";
 
             await using var reader = await cmdUsuario.ExecuteReaderAsync();
             while (await reader.ReadAsync())
@@ -534,8 +552,9 @@ app.MapGet("/getmensagens", async () =>
                     IdMensagem = reader.GetInt32(0),
                     IdRemetente = reader.GetInt32(1),
                     IdDestinatario = reader.GetInt32(2),
-                    Mensagem = reader.GetString(3),
-                    DataEnvio = reader.GetDateTime(4),
+                    NomeDestinatario = reader.GetString(3),
+                    Mensagem = reader.GetString(4),
+                    DataEnvio = reader.GetDateTime(5),
                     Tipo = "USUARIO"
                 });
             }
@@ -590,10 +609,17 @@ app.MapGet("/getmensagemenviadas", async (int id) =>
         // ====== MENSAGEM_USUARIO ======
         await using (var cmdUsuario = conn.CreateCommand())
         {
-            cmdUsuario.CommandText = @"
-                SELECT ID_MENSAGEM, ID_REMETENTE, ID_DESTINATARIO, MENSAGEM, DATA_ENVIO
-                FROM MENSAGEM_USUARIO
-                WHERE ID_REMETENTE = :Id";
+            cmdUsuario.CommandText = cmdUsuario.CommandText = @"
+            SELECT 
+                MU.ID_MENSAGEM,
+                MU.ID_REMETENTE,
+                MU.ID_DESTINATARIO,
+                D.NOME AS NOME_DESTINATARIO,
+                MU.MENSAGEM,
+                MU.DATA_ENVIO
+            FROM MENSAGEM_USUARIO MU
+            JOIN USUARIO D ON MU.ID_DESTINATARIO = D.ID_USUARIO
+            WHERE MU.ID_REMETENTE = :Id";
             cmdUsuario.Parameters.Add(new OracleParameter("Id", id));
 
             await using var readerUsuario = await cmdUsuario.ExecuteReaderAsync();
@@ -604,8 +630,9 @@ app.MapGet("/getmensagemenviadas", async (int id) =>
                     IdMensagem = readerUsuario.GetInt32(0),
                     IdRemetente = readerUsuario.GetInt32(1),
                     IdDestinatario = readerUsuario.GetInt32(2),
-                    Mensagem = readerUsuario.GetString(3),
-                    DataEnvio = readerUsuario.GetDateTime(4),
+                    NomeDestinatario = readerUsuario.GetString(3),
+                    Mensagem = readerUsuario.GetString(4),
+                    DataEnvio = readerUsuario.GetDateTime(5),
                     Tipo = "USUARIO"
                 });
             }
