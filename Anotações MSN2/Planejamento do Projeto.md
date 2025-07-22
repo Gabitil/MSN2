@@ -88,13 +88,13 @@ Se quiser, adicione tags como #feito, #andamento, #importante
 ### ⚙️ Configuração
 
 - [x] Criar projeto React
-- [ ] Instalar dependências (Axios, React Router)
-- [ ] Criar `.env` com URL da API
-- [ ] Configurar rotas
+- [x] Instalar dependências (Axios, React Router)
+- [x] Criar `.env` com URL da API
+- [x] Configurar rotas
 
 ### 👤 Telas de Usuário
 
-- [ ] Login/Cadastro
+- [x] Login/Cadastro
 - [ ] Lista de salas
 - [ ] Criar nova sala
 - [ ] Entrar/sair de sala

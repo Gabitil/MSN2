@@ -839,6 +839,80 @@ app.MapPost("/addmensagemsala", async (int idSala, int idRemetente, string mensa
 .WithSummary("Adiciona uma nova mensagem em uma sala")
 .WithOpenApi();
 
+app.MapPost("/addvisualizacaosala", async (int idMensagem, int idUsuario) =>
+{
+    try
+    {
+        await using var conn = new OracleConnection(connStr);
+        await conn.OpenAsync();
+
+        await using var cmd = conn.CreateCommand();
+        cmd.CommandText = "INSERT INTO VISUALIZACAO_SALA (ID_MENSAGEM, ID_USUARIO, DATA_VISUALIZACAO) VALUES (:IdMensagem, :IdUsuario, SYSDATE)";
+        cmd.Parameters.Add(new OracleParameter("IdMensagem", idMensagem));
+        cmd.Parameters.Add(new OracleParameter("IdUsuario", idUsuario));
+
+        int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+        if (rowsAffected > 0)
+        {
+            return Results.Ok(new { message = "Visualização registrada com sucesso!" });
+        }
+        else
+        {
+            return Results.BadRequest(new { message = "Nenhuma visualização foi registrada." });
+        }
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(detail: ex.Message + "\n" + ex.StackTrace,
+                              title: "❌ Falha ao registrar visualização",
+                              statusCode: 500);
+    }
+})
+.WithName("AddVisualizacaoSala")
+.WithSummary("Registra a visualização de uma mensagem em uma sala por um usuário")
+.WithOpenApi();
+
+app.MapGet("/getvisualizacaosala", async (int idMensagem) =>
+{
+    try
+    {
+        await using var conn = new OracleConnection(connStr);
+        await conn.OpenAsync();
+
+        await using var cmd = conn.CreateCommand();
+        cmd.CommandText = "SELECT ID_USUARIO, DATA_VISUALIZACAO FROM VISUALIZACAO_SALA WHERE ID_MENSAGEM = :IdMensagem";
+        cmd.Parameters.Add(new OracleParameter("IdMensagem", idMensagem));
+
+        var visualizacoes = new List<object>();
+        await using var reader = await cmd.ExecuteReaderAsync();
+        while (await reader.ReadAsync())
+        {
+            visualizacoes.Add(new
+            {
+                IdUsuario = reader.GetInt32(0),
+                DataVisualizacao = reader.GetDateTime(1)
+            });
+        }
+
+        if (visualizacoes.Count == 0)
+        {
+            return Results.NotFound(new { message = "Nenhuma visualização encontrada para esta mensagem." });
+        }
+
+        return Results.Ok(visualizacoes);
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(detail: ex.Message + "\n" + ex.StackTrace,
+                              title: "❌ Falha ao obter visualizações",
+                              statusCode: 500);
+    }
+})
+.WithName("GetVisualizacaoSala")
+.WithSummary("Obtém todas as visualizações de uma mensagem em uma sala")
+.WithOpenApi();
+
 app.MapPost("/addmensagemusuario", async (int idRemetente, int idDestinatario, string mensagem) =>
 {
     try
