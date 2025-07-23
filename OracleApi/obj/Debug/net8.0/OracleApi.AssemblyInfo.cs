@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OracleApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c582618dd85e058f66970acb75b08151ba4a9640")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a4d34ba08c710bf56ae04d20d6e9be1bee9d363")]
 [assembly: System.Reflection.AssemblyProductAttribute("OracleApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OracleApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

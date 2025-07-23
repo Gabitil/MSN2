@@ -121,3 +121,20 @@ Se quiser, adicione tags como #feito, #andamento, #importante
 ---
 
 > ✅ Dica: Use tags como `#feito`, `#emprogresso`, `#bloqueado` se quiser controlar o progresso no Obsidian com busca e filtros!
+
+
+
+## O que falta fazer
+
+- **Usuário**
+
+- [x] Botão nos nomes dos usuários e salas, que vai mandar o usuário para a conversa com essas salas e usuários.
+- [x] Botão para começar uma nova mensagem (usuário tem que inserir o e-mail da pessoa que ele quer conversar);
+- [x] Botão para o usuário criar uma sala.
+- [ ] botão para usuário adicionar membro em uma sala.
+- [x] Adicionar a notificação com a quantidade de mensagens não lidas;
+	- [x] Criar as endpoints que fazem essa visualização
+
+- **Admin**
+
+- [ ] Botão que vai redirecionar ele para um Lugar para ver relatórios;

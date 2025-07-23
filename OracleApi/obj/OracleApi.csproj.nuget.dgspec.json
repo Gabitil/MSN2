@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/media/gabitil/SSD/Facul/MSN2/OracleApi/OracleApi.csproj": {}
+    "/media/SSD/Facul/MSN2/OracleApi/OracleApi.csproj": {}
   },
   "projects": {
-    "/media/gabitil/SSD/Facul/MSN2/OracleApi/OracleApi.csproj": {
+    "/media/SSD/Facul/MSN2/OracleApi/OracleApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/gabitil/SSD/Facul/MSN2/OracleApi/OracleApi.csproj",
+        "projectUniqueName": "/media/SSD/Facul/MSN2/OracleApi/OracleApi.csproj",
         "projectName": "OracleApi",
-        "projectPath": "/media/gabitil/SSD/Facul/MSN2/OracleApi/OracleApi.csproj",
+        "projectPath": "/media/SSD/Facul/MSN2/OracleApi/OracleApi.csproj",
         "packagesPath": "/home/gabitil/.nuget/packages/",
-        "outputPath": "/media/gabitil/SSD/Facul/MSN2/OracleApi/obj/",
+        "outputPath": "/media/SSD/Facul/MSN2/OracleApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/gabitil/.nuget/NuGet/NuGet.Config"
